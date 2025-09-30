@@ -1,0 +1,96 @@
+﻿<Window x:Class="DoAnCaNhan.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DoAnCaNhan"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+
+            <RowDefinition Height="Auto"/>
+
+            <RowDefinition Height="2*"/>
+
+            <RowDefinition Height="Auto"/>
+
+            <RowDefinition Height="Auto"/>
+
+        </Grid.RowDefinitions>
+
+
+        <TextBlock Text="QUẢN LÝ VÉ" 
+                   FontSize="24" FontWeight="Bold" 
+                   HorizontalAlignment="Center" Margin="0,0,0,10"/>
+
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,5">
+            <TextBox x:Name="txtTimKiem" Width="200" Height="25" />
+            <Button x:Name="btnTimKiem" Content=" Tìm kiếm" Width="100" Margin="5,0,0,0"/>
+        </StackPanel>
+
+        <DataGrid x:Name="dgVe" Grid.Row="2" AutoGenerateColumns="False" CanUserAddRows="False" Margin="0,5">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mã Vé" Binding="{Binding MaVe}" Width="*"/>
+                <DataGridTextColumn Header="Khách Hàng" Binding="{Binding KhachHang}" Width="*"/>
+                <DataGridTextColumn Header="Phim" Binding="{Binding TenPhim}" Width="*"/>
+                <DataGridTextColumn Header="Ngày Chiếu" Binding="{Binding NgayChieu}" Width="*"/>
+                <DataGridTextColumn Header="Giờ Chiếu" Binding="{Binding GioChieu}" Width="*"/>
+                <DataGridTextColumn Header="Ghế" Binding="{Binding Ghe}" Width="*"/>
+                <DataGridTextColumn Header="Giá Vé" Binding="{Binding GiaVe}" Width="*"/>
+                <DataGridTextColumn Header="Trạng Thái" Binding="{Binding TrangThai}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+
+        <GroupBox Header="Chi tiết vé" Grid.Row="3" Margin="0,5">
+            <Grid Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="200"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Khách hàng:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center"/>
+                <TextBox x:Name="txtKhachHang" Grid.Row="0" Grid.Column="1"/>
+
+                <TextBlock Text="Phim:" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center"/>
+                <ComboBox x:Name="cbPhim" Grid.Row="0" Grid.Column="3"/>
+
+                <TextBlock Text="Lịch chiếu:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center"/>
+                <ComboBox x:Name="cbLichChieu" Grid.Row="1" Grid.Column="1" SelectionChanged="cbLichChieu_SelectionChanged"/>
+
+                <TextBlock Text="Ghế:" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center"/>
+                <ComboBox x:Name="cbGhe" Grid.Row="1" Grid.Column="3"/>
+
+                <TextBlock Text="Giá vé:" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center"/>
+                <TextBox x:Name="txtGiaVe" Grid.Row="2" Grid.Column="1"/>
+
+                <TextBlock Text="Trạng thái:" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center"/>
+                <ComboBox x:Name="cbTrangThai" Grid.Row="2" Grid.Column="3">
+                    <ComboBoxItem Content="Trống"/>
+                    <ComboBoxItem Content="Đã đặt"/>
+                </ComboBox>
+            </Grid>
+        </GroupBox>
+
+
+        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10">
+            <Button x:Name="btnThem" Content=" Thêm" Width="80" Margin="5"/>
+            <Button x:Name="btnSua" Content=" Sửa" Width="80" Margin="5"/>
+            <Button x:Name="btnXoa" Content=" Xóa" Width="80" Margin="5"/>
+            <Button x:Name="btnIn" Content=" In vé" Width="80" Margin="5"/>
+            <Button x:Name="btnLamMoi" Content=" Làm mới" Width="100" Margin="5"/>
+        </StackPanel>
+
+    </Grid>
+</Window>
