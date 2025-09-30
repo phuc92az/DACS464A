@@ -6,7 +6,50 @@
         xmlns:local="clr-namespace:DoAnCaNhan"
         mc:Ignorable="d"
         Title="QLSuatChieu" Height="450" Width="800">
-    <Grid>
-        
+    <Grid Margin="12">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="360"/>
+            <ColumnDefinition Width="12"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Form -->
+        <StackPanel Grid.Column="0" Orientation="Vertical">
+            <TextBlock Text="Phim" FontWeight="Bold"/>
+            <ComboBox x:Name="cboPhim" DisplayMemberPath="TenPhim" SelectedValuePath="MaPhim"/>
+
+            <TextBlock Margin="0,10,0,0" Text="Phòng chiếu" FontWeight="Bold"/>
+            <ComboBox x:Name="cboPhong" DisplayMemberPath="TenPhong" SelectedValuePath="MaPhong"/>
+
+            <TextBlock Margin="0,10,0,0" Text="Ngày chiếu" FontWeight="Bold"/>
+            <DatePicker x:Name="dpNgay"/>
+
+            <TextBlock Margin="0,10,0,0" Text="Giờ chiếu (HH:mm)" FontWeight="Bold"/>
+            <TextBox x:Name="txtGio" ToolTip="Ví dụ: 18:30"/>
+
+            <TextBlock Margin="0,10,0,0" Text="Giá vé" FontWeight="Bold"/>
+            <TextBox x:Name="txtGia" ToolTip="VD: 90000"/>
+
+            <StackPanel Orientation="Horizontal" Margin="0,16,0,0">
+                <Button x:Name="btnThem" Content="Thêm" Width="80" Click="btnThem_Click"/>
+                <Button x:Name="btnSua"  Content="Sửa"  Width="80" Margin="8,0,0,0" Click="btnSua_Click"/>
+                <Button x:Name="btnXoa"  Content="Xoá"  Width="80" Margin="8,0,0,0" Click="btnXoa_Click"/>
+                <Button x:Name="btnMoi"  Content="Mới"  Width="80" Margin="8,0,0,0" Click="btnMoi_Click"/>
+            </StackPanel>
+        </StackPanel>
+
+        <!-- Danh sách -->
+        <DataGrid x:Name="dgSuatChieu" Grid.Column="2"
+                  AutoGenerateColumns="False" IsReadOnly="True"
+                  SelectionMode="Single" SelectionChanged="dgSuatChieu_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Mã"    Binding="{Binding MaLichChieu}" Width="60"/>
+                <DataGridTextColumn Header="Phim"  Binding="{Binding TenPhim}"     Width="200"/>
+                <DataGridTextColumn Header="Phòng" Binding="{Binding TenPhong}"    Width="140"/>
+                <DataGridTextColumn Header="Ngày"  Binding="{Binding NgayChieu, StringFormat={}{0:dd/MM/yyyy}}"/>
+                <DataGridTextColumn Header="Giờ"   Binding="{Binding GioChieu}"/>
+                <DataGridTextColumn Header="Giá vé" Binding="{Binding GiaVe, StringFormat={}{0:#,0}}"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Window>
